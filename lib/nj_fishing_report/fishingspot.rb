@@ -1,4 +1,6 @@
-class FishingSpot::Spot
+puts "fishing spot loaded"
+
+class NjFishingReport::FishingSpot
 
   attr_accessor :name, :url
   def self.today

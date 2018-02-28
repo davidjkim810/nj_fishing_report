@@ -3,16 +3,15 @@ lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "nj_fishing_report/version"
 
-
 Gem::Specification.new do |spec|
   spec.name          = "nj_fishing_report"
   spec.version       = NjFishingReport::VERSION
-  spec.authors       = ["<github username>"]
-  spec.email         = ["<github email address>"]
+  spec.authors       = ["David Kim"]
+  spec.email         = ["davidjkim810@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because RubyGems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{"This gem allows users to view fishing reports in NJ"}
+  spec.description   = %q{View the most recent fishing reports in New Jersey. Select a location on the list of popular fishing locations and receive a report.}
+  spec.homepage      = "https://github.com/davidjkim810/nj_fishing_report"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
@@ -33,5 +32,6 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.16"
   spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency "pry", ">= 0"
   spec.add_development_dependency "rspec", "~> 3.0"
 end

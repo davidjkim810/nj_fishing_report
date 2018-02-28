@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 
-require "bundler/setup"
-require "../lib/nj_fishing_report"
+require_relative "../lib/nj_fishing_report.rb"
 
 
 NjFishingReport::CLI.new.call
