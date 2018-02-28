@@ -2,5 +2,4 @@
 
 require_relative "../lib/nj_fishing_report.rb"
 
-binding.pry
 NjFishingReport::CLI.new.call
