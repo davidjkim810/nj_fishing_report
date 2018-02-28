@@ -1,5 +1,6 @@
 require 'pry'
 require 'nokogiri'
+require 'open-uri'
 
 
 require_relative "../lib/nj_fishing_report/version"

@@ -14,7 +14,7 @@ How to build a CLI gem
 - A command line interface (CLI) for NJ fishing reports, starting with njfishingreports.
 - User types in nj-fishing-report
 - Shows a list of popular nj fishing areas
-1. Belmar - Current Condition - Weather - High Tide - Low Tide
+1. Belmar - Current Weather - High Tide - Low Tide
 2. Brielle
 3. Point Pleasant Beach
 - Which location would you like to get the fishing report for?
