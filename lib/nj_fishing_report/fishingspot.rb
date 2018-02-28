@@ -1,4 +1,4 @@
-puts "fishing spot loaded"
+
 
 class NjFishingReport::FishingSpot
 

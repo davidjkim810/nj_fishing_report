@@ -1,6 +1,4 @@
 # Our CLI Controller (Model View Controller)
-puts "Njfishingreport::CLI loaded"
-
 class NjFishingReport::CLI
 
   def call
