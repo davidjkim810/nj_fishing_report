@@ -2,10 +2,15 @@
 class NjFishingReport::CLI
 
   def call
+    greeting
     NjFishingReport::Scraper.scrape_fishing_location_and_report
     list_fishing_locations
-
   end
+
+  def greeting
+    puts "Welcome to the New Jersey Fishing Report CLI!"
+  end
+
 
   def list_fishing_locations
     NjFishingReport::Fishing_Location.all.each_with_index do |location, index|
