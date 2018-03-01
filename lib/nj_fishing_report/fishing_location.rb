@@ -1,7 +1,7 @@
 
 class NjFishingReport::Fishing_Location
 
-  attr_accessor :name, :fishing_report
+  attr_accessor :name, :fishing_report, :url
   @@all = []
 
   def initialize(name, fishing_report)

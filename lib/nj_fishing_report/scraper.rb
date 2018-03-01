@@ -16,4 +16,9 @@ class NjFishingReport::Scraper
       NjFishingReport::Fishing_Location.new(location.text, NjFishingReport::Fishing_Report.new("http://www.fishingreportsnow.com/" + location.attribute("href").value))
     end
   end
+
+  def self.scrape_fishing_report
+    
+  end
+
 end
