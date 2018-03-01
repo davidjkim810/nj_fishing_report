@@ -2,6 +2,7 @@
 class NjFishingReport::Scraper
 
   def self.scrape_fishing_location
+
     doc = Nokogiri::HTML(open('http://www.fishingreportsnow.com/New_Jersey_Fishing_Reports_Pro.cfm/reg/7'))
 
     fishing_locations = []
@@ -21,13 +22,26 @@ class NjFishingReport::Scraper
 
 
   def self.scrape_fishing_report
+
     NjFishingReport::Fishing_Location.all.each do |location|
-      fishing_report = NjFishingReport::Fishing_Report.new(location.url)
-      fishing_report.fishing_location = location.name
+
+      doc = Nokogiri::HTML(open(location.url))
+
+      doc.css("td.reportstext").each do |scraping_only_fishing_report|
+        if scraping_only_fishing_report.attribute("align").value == "left"
+
+          scraped_fishing_report = NjFishingReport::Fishing_Report.new(scraping_only_fishing_report.text.strip)
+
+          scraped_fishing_report.url = location.url
+
+          scraped_fishing_report.fishing_location = NjFishingReport::Fishing_Location.all.detect {|instance| instance.name == location.name}
+
+          instance_of_fishing_location = NjFishingReport::Fishing_Location.all.detect {|instance| instance.name == location.name}
+
+          instance_of_fishing_location.fishing_report = scraped_fishing_report
+
+        end
+      end
     end
   end
-
 end
-#
-# fishing_locations.each do |location|
-#   NjFishingReport::Fishing_Location.new(location.text, NjFishingReport::Fishing_Report.new("http://www.fishingreportsnow.com/" + location.attribute("href").value))

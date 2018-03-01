@@ -1,19 +1,14 @@
 class NjFishingReport::Fishing_Report
 
-  attr_accessor :report, :fishing_location
+  attr_accessor :report, :fishing_location, :url
   @@all = []
-  def initialize(report_url)
-    doc = Nokogiri::HTML(open(report_url))
-    doc.css("td.reportstext").each do |possible_fishing_report|
-      if possible_fishing_report.attribute("align").value == "left"
-        @report = possible_fishing_report.text.strip
-      end
-    end
+
+  def initialize(report)
+    @report = report
     @@all << self
   end
 
   def self.all
     @@all
   end
-
 end
