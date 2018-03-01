@@ -1,5 +1,4 @@
 
-
 class NjFishingReport::Fishing_Location
 
   attr_accessor :name, :fishing_report

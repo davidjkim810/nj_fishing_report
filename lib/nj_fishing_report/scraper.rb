@@ -2,8 +2,7 @@
 class NjFishingReport::Scraper
 
   def self.scrape_fishing_location_and_report
-    doc =
-    Nokogiri::HTML(open('http://www.fishingreportsnow.com/New_Jersey_Fishing_Reports_Pro.cfm/reg/7'))
+    doc = Nokogiri::HTML(open('http://www.fishingreportsnow.com/New_Jersey_Fishing_Reports_Pro.cfm/reg/7'))
 
     fishing_locations = []
 
@@ -17,10 +16,4 @@ class NjFishingReport::Scraper
       NjFishingReport::Fishing_Location.new(location.text, NjFishingReport::Fishing_Report.new("http://www.fishingreportsnow.com/" + location.attribute("href").value))
     end
   end
-
-  def self.scrape_fishing_report
-    
-  end
-
-
 end

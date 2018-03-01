@@ -4,9 +4,9 @@ class NjFishingReport::Fishing_Report
   @@all = []
   def initialize(report_url)
     doc = Nokogiri::HTML(open(report_url))
-    doc.css("td.reportstext").each do |text|
-      if text.attribute("align").value == "left"
-        @report = text.text.strip
+    doc.css("td.reportstext").each do |possible_fishing_report|
+      if possible_fishing_report.attribute("align").value == "left"
+        @report = possible_fishing_report.text.strip
       end
     end
     @@all << self
