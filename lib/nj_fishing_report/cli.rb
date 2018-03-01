@@ -2,23 +2,27 @@
 class NjFishingReport::CLI
 
   def call
+    greeting
+    create_fishing_location_and_report
+    run_program_interface
+  end
+
+  def greeting
     puts " "
     puts " "
-    puts "Welcome to the New Jersey Fishing Report"
+    puts "Welcome to the New Jersey Fishing Report CLI"
     puts " "
     puts " "
     puts "Loading...."
     puts " "
     puts " "
-    create_fishing_location_and_report
-    greeting
   end
 
-  def greeting
+  def run_program_interface
     loop do
       puts "-----------------------------------------"
       puts " "
-      puts "To see a list of fishing spots in NJ, enter 'list'"
+      puts "For a list of fishing spots, enter 'list'"
       puts " "
       puts "-----------------------------------------"
       puts " "
@@ -40,11 +44,16 @@ class NjFishingReport::CLI
         list_fishing_locations
         fishing_report
       else
+        puts "+++++++++++++++++++++++++++"
+        puts "+++++++++++++++++++++++++++"
         puts " "
-        puts "+++++++++++++++++++++++++"
-        puts "Please make a valid entry"
-        puts "+++++++++++++++++++++++++"
+        puts "Please type a valid entry"
         puts " "
+        puts "+++++++++++++++++++++++++++"
+        puts "+++++++++++++++++++++++++++"
+        puts " "
+        puts " "
+        sleep(3)
       end
     end
   end
@@ -55,7 +64,7 @@ class NjFishingReport::CLI
 
   def list_fishing_locations
     puts "-----------------------------------------"
-    puts Time.now
+    puts " "
     puts " "
     puts "*Fishing Locations in NJ*"
     puts " "
@@ -70,6 +79,7 @@ class NjFishingReport::CLI
     puts " "
     puts "Please input a number, or enter 'exit' to return to the main menu."
     puts " "
+    puts " "
     input = gets.strip
     puts " "
     puts " "
@@ -82,7 +92,6 @@ class NjFishingReport::CLI
         puts " "
         input = gets.strip
       else
-
         puts "********************************"
         puts "Fishing Report for #{NjFishingReport::Fishing_Location.all[input.to_i-1].name}:"
         puts "********************************"
@@ -90,7 +99,6 @@ class NjFishingReport::CLI
         puts NjFishingReport::Fishing_Report.all[input.to_i-1].report
         puts " "
         sleep(5)
-
         break
       end
     end
@@ -108,5 +116,7 @@ class NjFishingReport::CLI
     puts " "
     puts " "
     puts "-----------------------------------------"
+    puts " "
+    puts " "
   end
 end
