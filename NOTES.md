@@ -1,4 +1,5 @@
 How to build a CLI gem
+
 1. Plan your gem, imagine your interface
 2. Start with the project structure - google
 3. Start with the entry point - the file run
@@ -8,13 +9,7 @@ How to build a CLI gem
 7. Discover objects.
 8. Program
 
-
-1. Plan Your Gem
-
-- A command line interface (CLI) for NJ fishing reports, starting with njfishingreports.
+- A command line interface (CLI) for NJ fishing reports
 - User types in nj-fishing-report
-- Shows a list of popular nj fishing areas
-1. Belmar - Current Weather - High Tide - Low Tide
-2. Brielle
-3. Point Pleasant Beach
-- Which location would you like to get the fishing report for?
+- Shows a menu where one can pick a list of popular nj fishing areas or exit
+- Ask for user input on what they'd like to do

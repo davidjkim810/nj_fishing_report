@@ -15,8 +15,4 @@ class NjFishingReport::Fishing_Location
     @@all
   end
 
-
-  def self.clear
-    @@all.clear
-  end
 end
