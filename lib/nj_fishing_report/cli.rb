@@ -18,25 +18,33 @@ class NjFishingReport::CLI
     loop do
       puts "-----------------------------------------"
       puts " "
-      puts "To see a list of the hottest fishing spots in NJ, enter 'list'"
+      puts "To see a list of fishing spots in NJ, enter 'list'"
       puts " "
       puts "-----------------------------------------"
       puts " "
-      puts "To quit, type 'exit'"
+      puts "To quit, enter 'exit'"
       puts " "
       puts "-----------------------------------------"
       puts " "
       puts "What would you like to do?"
+      puts " "
       puts " "
       input = gets.strip
       puts " "
       puts " "
 
       if input == 'exit'
+        goodbye
         break
       elsif input == 'list'
         list_fishing_locations
         fishing_report
+      else
+        puts " "
+        puts "+++++++++++++++++++++++++"
+        puts "Please make a valid entry"
+        puts "+++++++++++++++++++++++++"
+        puts " "
       end
     end
   end
@@ -45,21 +53,26 @@ class NjFishingReport::CLI
     NjFishingReport::Scraper.scrape_fishing_location_and_report
   end
 
-
   def list_fishing_locations
     puts "-----------------------------------------"
-    puts "**List of the Hottest Fishing Locations in NJ**"
+    puts Time.now
+    puts " "
+    puts "*Fishing Locations in NJ*"
+    puts " "
     puts " "
     NjFishingReport::Fishing_Location.all.each_with_index do |location, index|
       puts "#{index + 1}. #{location.name}"
+      puts " "
     end
   end
 
   def fishing_report
     puts " "
-    puts "Please input the number of the location for a fishing report, or type 'exit'"
+    puts "Please input a number, or enter 'exit' to return to the main menu."
     puts " "
     input = gets.strip
+    puts " "
+    puts " "
     loop do
       if input == "exit"
         break
@@ -69,14 +82,31 @@ class NjFishingReport::CLI
         puts " "
         input = gets.strip
       else
+
+        puts "********************************"
         puts "Fishing Report for #{NjFishingReport::Fishing_Location.all[input.to_i-1].name}:"
+        puts "********************************"
+        puts " "
         puts NjFishingReport::Fishing_Report.all[input.to_i-1].report
+        puts " "
+        sleep(5)
+
         break
       end
     end
   end
 
   def goodbye
-    puts "Come back again to see more fishing reports!"
+    puts "-----------------------------------------"
+    puts " "
+    puts " "
+    puts "Happy Fishing!"
+    puts " "
+    puts "Give a man a fish, and you feed him for a day."
+    puts "Teach a man to fish, and you feed him for a lifetime."
+    puts "- Unidentified Wise Man"
+    puts " "
+    puts " "
+    puts "-----------------------------------------"
   end
 end
