@@ -2,4 +2,5 @@
 
 require_relative "../lib/nj_fishing_report.rb"
 
+
 NjFishingReport::CLI.new.call
