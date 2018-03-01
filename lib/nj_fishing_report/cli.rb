@@ -1,4 +1,4 @@
-# Our CLI Controller (Model View Controller)
+
 class NjFishingReport::CLI
 
   def call
@@ -33,7 +33,7 @@ class NjFishingReport::CLI
       puts "What would you like to do?"
       puts " "
       puts " "
-      input = gets.strip
+      input = gets.strip.downcase
       puts " "
       puts " "
 
@@ -80,7 +80,7 @@ class NjFishingReport::CLI
     puts "Please input a number, or enter 'exit' to return to the main menu."
     puts " "
     puts " "
-    input = gets.strip
+    input = gets.strip.downcase
     puts " "
     puts " "
     loop do
@@ -90,7 +90,7 @@ class NjFishingReport::CLI
         puts "That is not a valid entry. Please input a number between 1 and #{NjFishingReport::Fishing_Location.all.length}, or type 'exit'"
         puts " "
         puts " "
-        input = gets.strip
+        input = gets.strip.downcase
       else
         puts "********************************"
         puts "Fishing Report for #{NjFishingReport::Fishing_Location.all[input.to_i-1].name}:"
