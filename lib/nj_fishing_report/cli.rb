@@ -53,13 +53,14 @@ class NjFishingReport::CLI
         puts "+++++++++++++++++++++++++++"
         puts " "
         puts " "
-        sleep(3)
+        sleep(2)
       end
     end
   end
 
   def create_fishing_location_and_report
-    NjFishingReport::Scraper.scrape_fishing_location_and_report
+    NjFishingReport::Scraper.scrape_fishing_location
+    NjFishingReport::Scraper.scrape_fishing_report
   end
 
   def list_fishing_locations
