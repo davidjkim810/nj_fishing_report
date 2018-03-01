@@ -18,5 +18,9 @@ class NjFishingReport::Scraper
     end
   end
 
+  def self.scrape_fishing_report
+    
+  end
+
 
 end

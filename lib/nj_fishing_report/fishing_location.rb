@@ -2,13 +2,13 @@
 
 class NjFishingReport::Fishing_Location
 
-  attr_accessor :name, :fishing_report, :tide_chart
+  attr_accessor :name, :fishing_report
   @@all = []
 
   def initialize(name, fishing_report)
     @name = name
     @fishing_report = fishing_report
-    fishing_report.fishing_location = name
+    fishing_report.report_location = name
     @@all << self
   end
 
