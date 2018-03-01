@@ -17,5 +17,4 @@ class NjFishingReport::Fishing_Location
     self.all.detect {|instance| instance.name == name}
   end
 
-
 end

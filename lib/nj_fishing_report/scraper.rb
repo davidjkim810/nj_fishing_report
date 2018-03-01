@@ -1,9 +1,11 @@
 
 class NjFishingReport::Scraper
 
+BASE_PATH = "http://www.fishingreportsnow.com/New_Jersey_Fishing_Reports_Pro.cfm/reg/7"
+
   def self.scrape_fishing_location
 
-    doc = Nokogiri::HTML(open('http://www.fishingreportsnow.com/New_Jersey_Fishing_Reports_Pro.cfm/reg/7'))
+    doc = Nokogiri::HTML(open(BASE_PATH))
 
     fishing_locations = []
 
@@ -18,6 +20,7 @@ class NjFishingReport::Scraper
        fishing_location = NjFishingReport::Fishing_Location.new(location.text)
       fishing_location.url = "http://www.fishingreportsnow.com/" + location.attribute("href").value
     end
+
   end
 
 
@@ -27,21 +30,20 @@ class NjFishingReport::Scraper
 
       doc = Nokogiri::HTML(open(location.url))
 
-      doc.css("td.reportstext").each do |scraping_only_fishing_report|
-        if scraping_only_fishing_report.attribute("align").value == "left"
+      doc.css("td.reportstext").each do |scraping_only_if_fishing_report|
+        if scraping_only_if_fishing_report.attribute("align").value == "left"
 
-          scraped_fishing_report = NjFishingReport::Fishing_Report.new(scraping_only_fishing_report.text.strip)
+          instance_of_fishing_report = NjFishingReport::Fishing_Report.new(scraping_only_if_fishing_report.text.strip)
 
-          scraped_fishing_report.url = location.url
-
-          scraped_fishing_report.fishing_location = NjFishingReport::Fishing_Location.all.detect {|instance| instance.name == location.name}
+          instance_of_fishing_report.fishing_location = NjFishingReport::Fishing_Location.all.detect {|instance| instance.name == location.name}
 
           instance_of_fishing_location = NjFishingReport::Fishing_Location.all.detect {|instance| instance.name == location.name}
 
-          instance_of_fishing_location.fishing_report = scraped_fishing_report
+          instance_of_fishing_location.fishing_report = instance_of_fishing_report
 
         end
       end
     end
   end
+
 end
